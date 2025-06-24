@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const REST_API_BASE_URL =
-    import.meta.env.VITE_APIURL || "http://localhost:8087/api";
+    import.meta.env.VITE_APIURL || "http://localhost:8080/api";
 const REST_API_URL = `${REST_API_BASE_URL}/employees`;
 
 console.log(`REST_API_BASE_URL = ${REST_API_BASE_URL}`);
@@ -76,7 +76,7 @@ const validateEmployeeData = (employee) => {
 export const listEmployees = async () => {
     try {
         console.log("Fetching employees...");
-        const response = await api.get("/employees/departments");
+        const response = await api.get(`/employees/departments`);
         console.log("Employees fetched successfully");
         return response;
     } catch (error) {
@@ -89,7 +89,7 @@ export const createEmployee = async (employee) => {
         validateEmployeeData(employee);
 
         console.log("Creating employee...");
-        const response = await api.post("/employees", employee);
+        const response = await api.post(`/employees`, employee);
         console.log("Employee created successfully");
         return response;
     } catch (error) {
